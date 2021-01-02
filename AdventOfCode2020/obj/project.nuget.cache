@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "OUWwgCe5azpB6W9yr9D/DXO7NHani9SelRoEPm/3HHp62CP19FgBxlAicGKm4DKnOUGuv82CbGaERvNt4XiJkg==",
+  "success": true,
+  "projectFilePath": "D:\\github\\aage\\advent-of-code-2020\\AdventOfCode2020\\AdventOfCode2020.fsproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Aage\\.nuget\\packages\\fsharp.core\\4.7.1\\fsharp.core.4.7.1.nupkg.sha512"
+  ],
+  "logs": []
+}
