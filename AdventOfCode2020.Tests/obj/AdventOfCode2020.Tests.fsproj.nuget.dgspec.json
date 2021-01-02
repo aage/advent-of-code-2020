@@ -1,0 +1,83 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\github\\aage\\advent-of-code-2020\\AdventOfCode2020.Tests\\AdventOfCode2020.Tests.fsproj": {}
+  },
+  "projects": {
+    "D:\\github\\aage\\advent-of-code-2020\\AdventOfCode2020.Tests\\AdventOfCode2020.Tests.fsproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\github\\aage\\advent-of-code-2020\\AdventOfCode2020.Tests\\AdventOfCode2020.Tests.fsproj",
+        "projectName": "AdventOfCode2020.Tests",
+        "projectPath": "D:\\github\\aage\\advent-of-code-2020\\AdventOfCode2020.Tests\\AdventOfCode2020.Tests.fsproj",
+        "packagesPath": "C:\\Users\\Aage\\.nuget\\packages\\",
+        "outputPath": "D:\\github\\aage\\advent-of-code-2020\\AdventOfCode2020.Tests\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Aage\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "FSharp.Core": {
+              "target": "Package",
+              "version": "[4.7.1, )",
+              "generatePathProperty": true
+            },
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[16.5.0, )",
+              "generatePathProperty": true
+            },
+            "coverlet.collector": {
+              "target": "Package",
+              "version": "[1.2.0, )",
+              "generatePathProperty": true
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.4.0, )",
+              "generatePathProperty": true
+            },
+            "xunit.runner.visualstudio": {
+              "target": "Package",
+              "version": "[2.4.0, )",
+              "generatePathProperty": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
