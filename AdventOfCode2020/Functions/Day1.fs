@@ -8,8 +8,8 @@ module Day1
                   if x + y = 2020 then yield (x, y)
         }
 
-    let partOne inputs =
+    let one inputs =
 
         setThatSumTo2020 inputs
         |> Seq.map (fun (x, y) -> x * y)
-        |> Seq.tryHead
+        |> Seq.head
