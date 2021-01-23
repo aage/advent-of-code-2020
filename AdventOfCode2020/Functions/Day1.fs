@@ -1,12 +1,6 @@
 module Day1
 
-    let setThatSumTo2020 (inputs: seq<int>) =
-
-        seq {
-                for x in inputs do
-                 for y in inputs do
-                  if x + y = 2020 then yield (x, y)
-        }
+    open Utilities
 
     let tripleThatSumTo2020 (inputs: seq<int>) =
 
@@ -19,8 +13,9 @@ module Day1
 
     let one inputs =
 
-        setThatSumTo2020 inputs
-        |> Seq.map (fun (x, y) -> x * y)
+        combinations inputs
+        |> Seq.filter (fun (x, y) -> x + y = 2020)
+        |> Seq.map (fun (x,y) -> x * y)
         |> Seq.head
 
     let two inputs =
