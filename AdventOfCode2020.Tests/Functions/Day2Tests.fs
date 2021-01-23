@@ -2,6 +2,7 @@ module Day2Tests
 
 open Day2
 open Xunit
+open FileSystem
 
 [<Fact>]
 let ``password policy correctly determines a valid password`` () =
@@ -20,3 +21,12 @@ let ``password policy correctly determines an invalid password`` () =
     let actual = applyPasswordPolicy data
 
     Assert.Equal(expected,actual)
+
+[<Fact>]
+let ``day 2 part 1`` () =
+    let expected = 622
+    let inputs = readPuzzleInput 2
+
+    let actual = one inputs
+
+    Assert.Equal(expected, actual)

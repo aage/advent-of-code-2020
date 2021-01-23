@@ -2,12 +2,12 @@
 
 open System
 open FileSystem
-open Day1
+open Day2
 
 [<EntryPoint>]
 let main argv =
-    let inputs = readPuzzleInput 1
-    let answer = inputs |> Seq.map int |> two
+    let inputs = readPuzzleInput 2
+    let answer = one inputs
 
     printfn "%i" answer
     0 // return an integer exit code
