@@ -1,32 +1,33 @@
 module Day2
 
-    let passwordPolicyOccurences  (data:string) =
+    type Policy = {Nums:int * int ; Letter:char ; Pass:string}
+
+    let makePolicy (data:string) =
         let parts = data.Split(' ') // data looks like "1-3 b: cdefg"
-        let range = parts.[0].Split('-') |> Array.map int
-        let letter = parts.[1].[0]
-        let pass = parts.[2]
+        let nums =
+            parts.[0].Split('-')
+            |> Array.map int
+
+        { Nums = nums.[0], nums.[1] ; Letter = parts.[1].[0] ; Pass = parts.[2] }
+
+    let passwordPolicyOccurences data =
+        let policy = makePolicy data
         let occurences =
-            pass
-            |> String.filter (fun c -> c = letter)
+            policy.Pass
+            |> String.filter (fun c -> c = policy.Letter)
             |> String.length
 
-        if [range.[0] .. range.[1]] |> List.contains occurences
-        then Ok pass
+        if [fst policy.Nums .. snd policy.Nums] |> List.contains occurences
+        then Ok policy.Pass
         else Error "Password not valid"
 
-    let passwordPolicyPosition (data:string) =
+    let passwordPolicyPosition data =
 
-        let parts = data.Split(' ') // data looks like "1-3 b: cdefg"
-        let positions =
-            parts.[0].Split('-')
-            |> Array.map (fun c -> (int c) - 1)
-        let letter = parts.[1].[0]
-        let pass = parts.[2]
+        let policy = makePolicy data
+        let letters = (policy.Pass.[fst policy.Nums - 1], policy.Pass.[snd policy.Nums - 1])
 
-        let letters = (pass.[positions.[0]], pass.[positions.[1]])
-
-        if (fst letters = letter) <> (snd letters = letter)
-        then Ok pass
+        if (fst letters = policy.Letter) <> (snd letters = policy.Letter)
+        then Ok policy.Pass
         else Error "Password not valid"
 
     let one inputs =
