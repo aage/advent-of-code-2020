@@ -37,3 +37,12 @@ module Day2
             match r with
             | Ok _ -> 1
             | _    -> 0)
+
+    let two inputs =
+
+        inputs
+        |> List.map passwordPolicyPosition
+        |> List.sumBy (fun r ->
+            match r with
+            | Ok _ -> 1
+            | _    -> 0)

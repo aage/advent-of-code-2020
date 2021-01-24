@@ -47,3 +47,12 @@ let ``day 2 part 1`` () =
     let actual = one inputs
 
     Assert.Equal(expected, actual)
+
+[<Fact>]
+let ``day 2 part 2`` () =
+    let expected = 263
+    let inputs = readPuzzleInput 2
+
+    let actual = two inputs
+
+    Assert.Equal(expected, actual)
