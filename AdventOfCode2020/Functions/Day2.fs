@@ -1,6 +1,6 @@
 module Day2
 
-    let applyPasswordPolicy  (data:string) =
+    let passwordPolicyOccurences  (data:string) =
         let parts = data.Split(' ') // data looks like "1-3 b: cdefg"
         let range = parts.[0].Split('-') |> Array.map int
         let letter = parts.[1].[0]
@@ -17,7 +17,7 @@ module Day2
     let one inputs =
 
         inputs
-        |> List.map applyPasswordPolicy
+        |> List.map passwordPolicyOccurences
         |> List.sumBy (fun r ->
             match r with
             | Ok _ -> 1

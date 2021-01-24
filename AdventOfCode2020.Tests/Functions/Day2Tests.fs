@@ -9,7 +9,7 @@ let ``password policy correctly determines a valid password`` () =
     let data = "1-3 a: abcde"
     let expected = Ok "abcde"
 
-    let actual = applyPasswordPolicy data
+    let actual = passwordPolicyOccurences data
 
     Assert.Equal(expected,actual)
 
@@ -18,7 +18,7 @@ let ``password policy correctly determines an invalid password`` () =
     let data = "1-3 b: cdefg"
     let expected = Error "Password not valid"
 
-    let actual = applyPasswordPolicy data
+    let actual = passwordPolicyOccurences data
 
     Assert.Equal(expected,actual)
 
