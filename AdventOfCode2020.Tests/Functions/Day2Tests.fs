@@ -5,7 +5,7 @@ open Xunit
 open FileSystem
 
 [<Fact>]
-let ``password policy correctly determines a valid password`` () =
+let ``password policy occurences correctly determines a valid password`` () =
     let data = "1-3 a: abcde"
     let expected = Ok "abcde"
 
@@ -14,7 +14,7 @@ let ``password policy correctly determines a valid password`` () =
     Assert.Equal(expected,actual)
 
 [<Fact>]
-let ``password policy correctly determines an invalid password`` () =
+let ``password policy occurences correctly determines an invalid password`` () =
     let data = "1-3 b: cdefg"
     let expected = Error "Password not valid"
 
