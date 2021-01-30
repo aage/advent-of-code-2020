@@ -32,3 +32,23 @@ let ``day 2 part 1`` () =
     let actual = one inputs
 
     Assert.Equal(expected, actual)
+
+[<Fact>]
+let ``day 2 works with test input`` () =
+    let data = [
+        "..##......."
+        "#...#...#.."
+        ".#....#..#."
+        "..#.#...#.#"
+        ".#...##..#."
+        "..#.##....."
+        ".#.#.#....#"
+        ".#........#"
+        "#.##...#..."
+        "#...##....#"
+        ".#..#...#.#" ]
+    let expected = 336
+
+    let actual = two data
+    
+    Assert.Equal(expected,actual)

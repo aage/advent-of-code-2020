@@ -7,7 +7,7 @@ open Day3
 [<EntryPoint>]
 let main argv =
     let inputs = readPuzzleInput 3
-    let answer = one inputs
+    let answer = two inputs
 
     printfn "%i" answer
     0 // return an integer exit code
