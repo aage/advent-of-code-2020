@@ -34,6 +34,16 @@ let ``day 2 part 1`` () =
     Assert.Equal(expected, actual)
 
 [<Fact>]
+let ``day 2 part 2`` () =
+    let expected = 7812180000L
+    let inputs = readPuzzleInput 3
+
+    let actual = two inputs
+
+    let equal = expected = actual
+    Assert.True(equal)
+
+[<Fact>]
 let ``day 2 works with test input`` () =
     let data = [
         "..##......."
@@ -47,7 +57,7 @@ let ``day 2 works with test input`` () =
         "#.##...#..."
         "#...##....#"
         ".#..#...#.#" ]
-    let expected = 336
+    let expected = 336L
 
     let actual = two data
     

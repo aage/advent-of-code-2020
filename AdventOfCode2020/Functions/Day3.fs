@@ -2,11 +2,9 @@ module Day3
 
     open Utilities
 
-    type TobaggonRoute = { Right:int; Down:int }
+    type TobogganRoute = { Right:int; Down:int }
 
-    let log msg = System.IO.File.AppendAllLines(@"c:\temp\foo.log",[msg])
-
-    let treesEncountered (route:TobaggonRoute) (inputs: string list) =
+    let treesEncountered (route:TobogganRoute) (inputs: string list) =
 
         let len = List.head inputs |> String.length
 
@@ -41,9 +39,7 @@ module Day3
             { Right = 1; Down = 2 }
         ]
 
-        let outcomes = routes |> List.map (fun algo -> treesEncountered algo inputs)
-
-        for o in outcomes do
-         sprintf "%i" o |> log
-
-        outcomes |> List.reduce (*)
+        routes
+        |> List.map (fun route -> treesEncountered route inputs)
+        |> List.map int64
+        |> List.reduce (*)
