@@ -25,7 +25,7 @@ let ``toboggan correctly counts amount of trees`` () =
     Assert.Equal(expected,actual)
 
 [<Fact>]
-let ``day 2 part 1`` () =
+let ``day 3 part 1`` () =
     let expected = 276
     let inputs = readPuzzleInput 3
 
@@ -34,7 +34,7 @@ let ``day 2 part 1`` () =
     Assert.Equal(expected, actual)
 
 [<Fact>]
-let ``day 2 part 2`` () =
+let ``day 3 part 2`` () =
     let expected = 7812180000L
     let inputs = readPuzzleInput 3
 
@@ -44,7 +44,7 @@ let ``day 2 part 2`` () =
     Assert.True(equal)
 
 [<Fact>]
-let ``day 2 works with test input`` () =
+let ``day 3 works with test input`` () =
     let data = [
         "..##......."
         "#...#...#.."
