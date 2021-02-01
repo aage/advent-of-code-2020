@@ -2,6 +2,7 @@ module Day4Tests
 
     open Xunit
     open Day4
+    open FileSystem
 
     [<Theory>]
     [<InlineData("ecl:gry pid:860033327 eyr:2020 hcl:#fffffd
@@ -17,4 +18,13 @@ module Day4Tests
     let ``validate password works as expected`` (data:string) (expected:bool) =
 
         let actual = validatePassport data
+        Assert.Equal(expected,actual)
+
+    [<Fact>]
+    let ``day 4 part 1`` () =
+        let expected = 204
+        let inputs = readPuzzleInput 4
+
+        let actual = one inputs
+
         Assert.Equal(expected,actual)

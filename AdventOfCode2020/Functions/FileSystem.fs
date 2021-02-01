@@ -12,5 +12,4 @@ module FileSystem
 
         puzzlePath
         |> File.ReadLines
-        |> Seq.filter (fun l -> l <> "")
         |> List.ofSeq
