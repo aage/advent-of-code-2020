@@ -92,7 +92,7 @@ module Day4
             "pid" ]
 
         mandatory
-        |> List.map (fun field -> sprintf "%s:" field)
+        |> List.map (sprintf "%s:")
         |> List.map (fun field -> data.Contains(field))
         |> List.forall id
 
@@ -118,10 +118,7 @@ module Day4
 
     let two (inputs:string list) =
 
-        let results =
-            inputs
-            |> List.map validateCorrectData
-        results
+        List.map validateCorrectData inputs
         |> List.sumBy (fun r ->
             match r with
             | Ok _ -> 1
