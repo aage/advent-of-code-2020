@@ -58,3 +58,12 @@ module Day4Tests
             | Ok _ -> (true, "")
             | Error e -> (false, e)
         Assert.Equal(expected, fst actual)
+
+    [<Fact>]
+    let ``day 4 part 2`` () =
+        let expected = 179
+        let inputs = readPuzzleInput 4
+
+        let actual = two inputs
+
+        Assert.Equal(expected,actual)
