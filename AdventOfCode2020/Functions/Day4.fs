@@ -109,7 +109,7 @@ module Day4
     let one (inputs:string list) =
 
         inputs
-        |> splitBy ((fun x -> x = ""))
+        |> splitBy ((=) "")
         |> Seq.map (Seq.reduce (+))
         |> Seq.map validateMandatoryData
         |> Seq.filter id
