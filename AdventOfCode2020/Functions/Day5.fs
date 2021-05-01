@@ -32,6 +32,12 @@ module Day5
         let (Column column) = determineColumn code
         Id (row * 8 + column)
 
+    let determineSeat (code:string) =
+        let row = determineRow code
+        let column = determineColumn code
+        let id = determineId code
+        Seat (row, column, id)
+
     let one (inputs:string list) =
 
         inputs
@@ -40,3 +46,20 @@ module Day5
             let (Id x) = id
             x)
         |> List.max
+
+    let two (inputs:string list) =
+
+        // map to ordered list of seat ids
+        let ids =
+            inputs
+            |> List.map determineSeat
+            |> List.map (fun (_, _, id) ->
+                let (Id x) = id
+                x)
+            |> List.sortBy id
+
+        // use lowest and highest id to determine range
+        let range = [Seq.head ids .. Seq.last ids]
+
+        // compare with actual range to find missing seat
+        range |> List.except ids |> List.head
