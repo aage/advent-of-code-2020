@@ -5,6 +5,7 @@ module Day5
     type Row = Row of int
     type Column = Column of int
     type Id = Id of int
+    type Seat = Row * Column * Id
 
     let private determine regex range useLower code =
 
@@ -30,3 +31,9 @@ module Day5
     let determineColumn (code:string) =
 
         determine "^[FB]{7}([LR]{3})$" (0, 7) ((=) 'L') code |> Column
+
+    let determineId (code:string) =
+
+        let (Row row) = determineRow code
+        let (Column column) = determineColumn code
+        Id (row * 8 + column)

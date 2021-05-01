@@ -25,3 +25,14 @@ module Day5Tests
         let (Column actual) = column
         Assert.Equal(expected,actual)
 
+    [<Theory>]
+    [<InlineData("FBFBBFFRLR", 357)>]
+    [<InlineData("BFFFBBFRRR", 567)>]
+    [<InlineData("FFFBBBFRRR", 119)>]
+    [<InlineData("BBFFBBFRLL", 820)>]
+    let ``a seat id be determined for a code`` (code:string) (expected:int) =
+
+        let id = determineId code
+        let (Id actual) = id
+        Assert.Equal(expected,actual)
+
