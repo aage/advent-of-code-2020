@@ -16,40 +16,37 @@ module Day4
             let value = m.Groups.[1].Value
             f value |> Result.map (fun _ -> data)
 
-    let validateBirthYear =
+    let validateYearRange lhs rhs name =
 
-        let f = fun (data:string) ->
+        fun (data:string) ->
             let rgx = Regex("^[0-9]{4}$")
             let valid = if rgx.Match(data).Success then
                             let x = int data
-                            x >= 1920 && x <= 2002
+                            x >= lhs && x <= rhs
                         else false
             if valid then Ok data
-            else Error (sprintf "Byr = %s and is not valid" data)
+            else Error (sprintf "%s = %s and is not valid" name data)
+
+    let validateRegex regex name =
+
+        fun (data:string) ->
+            let rgx = Regex(regex)
+            if rgx.Match(data).Success then Ok data
+            else Error (sprintf "%s = %s and is not valid" name data)
+
+    let validateBirthYear =
+
+        let f = validateYearRange 1920 2002 "byr"
         validate "byr" f
 
     let validateIssueYear =
 
-        let f = fun (data:string) ->
-            let rgx = Regex("^[0-9]{4}$")
-            let valid = if rgx.Match(data).Success then
-                            let x = int data
-                            x >= 2010 && x <= 2020
-                        else false
-            if valid then Ok data
-            else Error (sprintf "Issue year = %s and is not valid" data)
+        let f = validateYearRange 2010 2020 "iyr"
         validate "iyr" f
 
     let validateExpirationYear =
 
-        let f = fun (data:string) ->
-            let rgx = Regex("^[0-9]{4}$")
-            let valid = if rgx.Match(data).Success then
-                            let x = int data
-                            x >= 2020 && x <= 2030
-                        else false
-            if valid then Ok data
-            else Error (sprintf "Exp = %s and is not valid" data)
+        let f = validateYearRange 2020 2030 "eyr"
         validate "eyr" f
 
     let validateHeight =
@@ -73,10 +70,7 @@ module Day4
 
     let validateHairColor =
 
-        let f = fun (data:string) ->
-            let rgx = Regex("^\#[0-9a-z]{6}$")
-            if rgx.Match(data).Success then Ok data
-            else Error (sprintf "Hair = %s and is not valid" data)
+        let f = validateRegex "^\#[0-9a-z]{6}$" "hcl"
         validate "hcl" f
 
     let validateEyeColor =
@@ -89,10 +83,7 @@ module Day4
 
     let validatePassportId =
 
-        let f = fun (data:string) ->
-            let rgx = Regex("^[0-9]{9}$")
-            if rgx.Match(data).Success then Ok data
-            else Error (sprintf "Pid = %s and is not valid" data)
+        let f = validateRegex "^[0-9]{9}$" "pid"
         validate "pid" f
 
     let validateMandatoryData (data:string) =
@@ -107,29 +98,26 @@ module Day4
             "pid" ]
 
         mandatory
-        |> List.map (sprintf "%s:")
         |> List.map (fun field -> data.Contains(field))
         |> List.forall id
 
-    let one (inputs:string list) =
-
-        inputs
-        |> splitBy ((=) "")
-        |> Seq.map (Seq.reduce (+))
-        |> Seq.map validateMandatoryData
-        |> Seq.filter id
-        |> Seq.length
-
     let validateCorrectData (data:string) = 
 
-        let removedBreaks = data.Replace("\n", " ").Replace("\r", " ");
-        validateBirthYear removedBreaks
+        validateBirthYear (data.Replace("\n", " ").Replace("\r", " "))
         |> Result.bind validateIssueYear
         |> Result.bind validateExpirationYear
         |> Result.bind validateHeight
         |> Result.bind validateHairColor
         |> Result.bind validateEyeColor
         |> Result.bind validatePassportId        
+    
+    let one (inputs:string list) =
+
+        inputs
+        |> splitBy ((=) "")
+        |> Seq.map (Seq.reduce (+))
+        |> Seq.map validateMandatoryData
+        |> Seq.sumBy (System.Convert.ToInt32)
 
     let two (inputs:string list) =
 
@@ -138,7 +126,5 @@ module Day4
         |> Seq.map (Seq.map (sprintf "%s " ))
         |> Seq.map (Seq.reduce (+))
         |> Seq.map validateCorrectData
-        |> Seq.sumBy (fun r ->
-            match r with
-            | Ok _ -> 1
-            | _    -> 0)
+        |> Seq.map isOk
+        |> Seq.sumBy (System.Convert.ToInt32)

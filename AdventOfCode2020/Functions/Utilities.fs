@@ -20,3 +20,10 @@ module Utilities
         if f x then incr i
         !i)
       |> Seq.map snd
+
+    let isOk =
+      function
+      | Ok _ -> true
+      | _    -> false
+
+    let isError r = isOk r |> not
