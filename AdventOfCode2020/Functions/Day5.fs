@@ -8,19 +8,23 @@ module Day5
     type Id = Id of int
     type Seat = Row * Column * Id
 
-    let private convertBinary regex zero one code =
+    let private translate (code:string) =
+        code
+            .Replace('F', '0')
+            .Replace('B', '1')
+            .Replace('L', '0')
+            .Replace('R', '1')
 
-        let rgx = Regex(regex)
-        rgx.Match(code)
-            .Groups.[1]
-            .Value
-            .Replace(zero, '0')
-            .Replace(one, '1')
-            |> fun x -> Convert.ToInt32(x, 2)
+    let private convertBinary lhs rhs code =
+
+        code
+        |> translate
+        |> fun s -> s.[lhs .. rhs]
+        |> fun x -> Convert.ToInt32(x, 2)
 
     let determineSeat (code:string) =
-        let row = convertBinary "^([FB]{7})[LR]{3}$" 'F' 'B' code
-        let column = convertBinary "^[FB]{7}([LR]{3})$" 'L' 'R' code
+        let row = convertBinary 0 6 code
+        let column = convertBinary 7 9 code
         let id = (row * 8 + column)
         Seat (Row row, Column column, Id id)
 
