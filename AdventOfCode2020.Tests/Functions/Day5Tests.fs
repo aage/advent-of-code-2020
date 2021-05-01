@@ -14,3 +14,14 @@ module Day5Tests
         let (Row actual) = row
         Assert.Equal(expected,actual)
 
+    [<Theory>]
+    [<InlineData("FBFBBFFRLR", 5)>]
+    [<InlineData("BFFFBBFRRR", 7)>]
+    [<InlineData("FFFBBBFRRR", 7)>]
+    [<InlineData("BBFFBBFRLL", 4)>]
+    let ``a column can be determined for a code`` (code:string) (expected:int) =
+
+        let column = determineColumn code
+        let (Column actual) = column
+        Assert.Equal(expected,actual)
+
