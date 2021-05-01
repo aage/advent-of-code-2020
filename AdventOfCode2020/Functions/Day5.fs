@@ -18,31 +18,17 @@ module Day5
             .Replace(one, '1')
             |> fun x -> Convert.ToInt32(x, 2)
 
-    let determineRow (code:string) =
-
-        convertBinary "^([FB]{7})[LR]{3}$" 'F' 'B' code |> Row
-
-    let determineColumn (code:string) =
-
-        convertBinary "^[FB]{7}([LR]{3})$" 'L' 'R' code |> Column
-
-    let determineId (code:string) =
-
-        let (Row row) = determineRow code
-        let (Column column) = determineColumn code
-        Id (row * 8 + column)
-
     let determineSeat (code:string) =
-        let row = determineRow code
-        let column = determineColumn code
-        let id = determineId code
-        Seat (row, column, id)
+        let row = convertBinary "^([FB]{7})[LR]{3}$" 'F' 'B' code
+        let column = convertBinary "^[FB]{7}([LR]{3})$" 'L' 'R' code
+        let id = (row * 8 + column)
+        Seat (Row row, Column column, Id id)
 
     let one (inputs:string list) =
 
         inputs
-        |> List.map determineId
-        |> List.map (fun id ->
+        |> List.map determineSeat
+        |> List.map (fun (_, _, id) ->
             let (Id x) = id
             x)
         |> List.max
