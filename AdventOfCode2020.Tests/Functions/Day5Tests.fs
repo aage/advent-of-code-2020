@@ -2,6 +2,7 @@ module Day5Tests
 
     open Xunit
     open Day5
+    open FileSystem
 
     [<Theory>]
     [<InlineData("FBFBBFFRLR", 44)>]
@@ -36,3 +37,11 @@ module Day5Tests
         let (Id actual) = id
         Assert.Equal(expected,actual)
 
+    [<Fact>]
+    let ``day 5 part 1`` () =
+        let expected = 858
+        let inputs = readPuzzleInput 5
+
+        let actual = one inputs
+
+        Assert.Equal(expected,actual)

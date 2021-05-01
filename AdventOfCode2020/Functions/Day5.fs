@@ -37,3 +37,12 @@ module Day5
         let (Row row) = determineRow code
         let (Column column) = determineColumn code
         Id (row * 8 + column)
+
+    let one (inputs:string list) =
+
+        inputs
+        |> List.map determineId
+        |> List.map (fun id ->
+            let (Id x) = id
+            x)
+        |> List.max
