@@ -21,6 +21,15 @@ module Utilities
         !i)
       |> Seq.map snd
 
+    let splitBy2 f input =
+      let i = ref 0
+      input
+      |> Seq.groupBy (fun x ->
+        if f x then incr i
+        !i)
+      |> Seq.map snd
+      |> Seq.map (Seq.filter (fun x -> f x |> not))
+
     let isOk =
       function
       | Ok _ -> true
