@@ -15,7 +15,7 @@ module Day6
         let alphabet = seq { 'a' .. 'z' }
 
         inputs
-        |> splitBy2 ((=) "")
+        |> splitBy ((=) "")
         |> Seq.map (fun group ->
             let len = Seq.length group
             let str = group |> Seq.concat

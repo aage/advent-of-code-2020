@@ -12,16 +12,8 @@ module Utilities
         then []
         else data.[n ..]
 
-    // taken from: https://stackoverflow.com/a/6737659
+    // based from: https://stackoverflow.com/a/6737659
     let splitBy f input =
-      let i = ref 0
-      input
-      |> Seq.groupBy (fun x ->
-        if f x then incr i
-        !i)
-      |> Seq.map snd
-
-    let splitBy2 f input =
       let i = ref 0
       input
       |> Seq.groupBy (fun x ->
