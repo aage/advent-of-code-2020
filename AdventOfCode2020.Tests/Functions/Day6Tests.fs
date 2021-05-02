@@ -5,6 +5,30 @@ module Day6Tests
     open FileSystem
 
     [<Fact>]
+    let ``questions anyone answers with yes`` () =
+        let expected = 11
+        let inputs = [
+            "abc"
+            ""
+            "a"
+            "b"
+            "c"
+            ""
+            "ab"
+            "ac"
+            ""
+            "a"
+            "a"
+            "a"
+            "a"
+            ""
+            "b" ]
+
+        let actual = one inputs
+
+        Assert.Equal(expected,actual)
+
+    [<Fact>]
     let ``questions everyone answers with yes`` () =
         let expected = 6
         let inputs = [
@@ -24,7 +48,7 @@ module Day6Tests
             ""
             "b" ]
 
-        let actual = everyoneYes inputs
+        let actual = two inputs
 
         Assert.Equal(expected,actual)
 

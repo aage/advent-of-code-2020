@@ -2,7 +2,15 @@ module Day6
 
     open Utilities
 
-    let everyoneYes (inputs:string list) =
+    let one (inputs:string list) =
+
+        inputs
+        |> Seq.map (fun s -> s.Replace(" ", ""))
+        |> splitBy ((=) "")
+        |> Seq.map (Seq.concat >> Seq.distinct >> Seq.length)
+        |> Seq.sum
+
+    let two (inputs:string list) =
 
         let alphabet = seq { 'a' .. 'z' }
 
@@ -18,15 +26,3 @@ module Day6
                 count))
         |> Seq.collect id
         |> Seq.length
-
-    let one (inputs:string list) =
-
-        inputs
-        |> Seq.map (fun s -> s.Replace(" ", ""))
-        |> splitBy ((=) "")
-        |> Seq.map (Seq.concat >> Seq.distinct >> Seq.length)
-        |> Seq.sum
-
-    let two (inputs:string list) =
-
-        everyoneYes inputs
