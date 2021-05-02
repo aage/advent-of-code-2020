@@ -26,3 +26,7 @@ module Day6
         |> splitBy ((=) "")
         |> Seq.map (Seq.concat >> Seq.distinct >> Seq.length)
         |> Seq.sum
+
+    let two (inputs:string list) =
+
+        everyoneYes inputs

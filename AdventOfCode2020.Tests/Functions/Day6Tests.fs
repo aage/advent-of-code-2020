@@ -36,3 +36,12 @@ module Day6Tests
         let actual = one inputs
 
         Assert.Equal(expected,actual)
+
+    [<Fact>]
+    let ``day 5 part 2`` () =
+        let expected = 3398
+        let inputs = readPuzzleInput 6
+
+        let actual = two inputs
+
+        Assert.Equal(expected,actual)
