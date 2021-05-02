@@ -2,12 +2,12 @@
 
 open System
 open FileSystem
-open Day5
+open Day6
 
 [<EntryPoint>]
 let main argv =
-    let inputs = readPuzzleInput 5
-    let answer = two inputs
+    let inputs = readPuzzleInput 6
+    let answer = one inputs
 
     printfn "%i" answer
     0 // return an integer exit code
