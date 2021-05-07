@@ -53,9 +53,10 @@ module Day7Tests
     let ``a set of rules determines how many bags can hold a specific bag`` () =
 
         let expected = 4
+        let bags = rules |> List.map parse
         let bag = { Color = Color "shiny gold" ; CanContain = [] }
 
-        let actual = bagsThatCanHoldBag rules bag |> List.length
+        let actual = bagsThatCanHoldBag bag bags |> List.length
 
         Assert.Equal (expected, actual)
 

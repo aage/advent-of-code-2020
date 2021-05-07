@@ -30,10 +30,8 @@ module Day7
                 |> List.ofArray
         { Color = color ; CanContain = bags }
 
-    let bagsThatCanHoldBag (rules: string list) (bag: Bag) =
+    let bagsThatCanHoldBag (bag: Bag) (bags: Bag list) =
     
-        let bags = rules |> List.map parse
-
         let rec inner
             (bagsToCheck: Bag list)
             (bagsThatCanHold: Bag list)
@@ -69,4 +67,8 @@ module Day7
     let one (inputs:string list) =
 
         let shinyGold = { Color = Color "shiny gold" ; CanContain = [] }
-        bagsThatCanHoldBag inputs shinyGold |> List.length
+
+        inputs
+        |> List.map parse
+        |> bagsThatCanHoldBag shinyGold
+        |> List.length
