@@ -65,3 +65,8 @@ module Day7
                     (canHold.Length > 0)
 
         inner bags [] true
+
+    let one (inputs:string list) =
+
+        let shinyGold = { Color = Color "shiny gold" ; CanContain = [] }
+        bagsThatCanHoldBag inputs shinyGold |> List.length

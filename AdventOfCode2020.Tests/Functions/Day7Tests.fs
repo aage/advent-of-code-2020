@@ -2,6 +2,7 @@ module Day7Tests
 
     open Xunit
     open Day7
+    open FileSystem
 
     let rules =
         [
@@ -57,3 +58,12 @@ module Day7Tests
         let actual = bagsThatCanHoldBag rules bag |> List.length
 
         Assert.Equal (expected, actual)
+
+    [<Fact>]
+    let ``day 7 part 1`` () =
+        let expected = 326
+        let inputs = readPuzzleInput 7
+
+        let actual = one inputs
+
+        Assert.Equal(expected,actual)
