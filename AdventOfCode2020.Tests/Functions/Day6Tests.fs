@@ -53,7 +53,7 @@ module Day6Tests
         Assert.Equal(expected,actual)
 
     [<Fact>]
-    let ``day 5 part 1`` () =
+    let ``day 6 part 1`` () =
         let expected = 6947
         let inputs = readPuzzleInput 6
 
@@ -62,7 +62,7 @@ module Day6Tests
         Assert.Equal(expected,actual)
 
     [<Fact>]
-    let ``day 5 part 2`` () =
+    let ``day 6 part 2`` () =
         let expected = 3398
         let inputs = readPuzzleInput 6
 
